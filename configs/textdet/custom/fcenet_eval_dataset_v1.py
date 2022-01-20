@@ -9,8 +9,8 @@ _base_ = [
 train_list = {{_base_.train_list}}
 test_list = {{_base_.test_list}}
 
-train_pipeline_icdar2015 = {{_base_.train_pipeline_icdar2015}}
-test_pipeline_icdar2015 = {{_base_.test_pipeline_icdar2015}}
+train_pipeline_shopee = {{_base_.train_pipeline_shopee}}
+test_pipeline_shopee = {{_base_.test_pipeline_shopee}}
 
 data = dict(
     samples_per_gpu=8,
@@ -20,14 +20,14 @@ data = dict(
     train=dict(
         type='UniformConcatDataset',
         datasets=train_list,
-        pipeline=train_pipeline_icdar2015),
+        pipeline=train_pipeline_shopee),
     val=dict(
         type='UniformConcatDataset',
         datasets=test_list,
-        pipeline=test_pipeline_icdar2015),
+        pipeline=test_pipeline_shopee),
     test=dict(
         type='UniformConcatDataset',
         datasets=test_list,
-        pipeline=test_pipeline_icdar2015))
+        pipeline=test_pipeline_shopee))
 
-evaluation = dict(interval=10, metric='hmean-iou')
+evaluation = dict(interval=5, metric='hmean-iou')

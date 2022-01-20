@@ -1,0 +1,1 @@
+python tools/test.py configs/textdet/custom/fcenet_eval_dataset_v1.py saved_models/fcenet_r50dcnv2_fpn_1500e_ctw1500_20211022-e326d7ec.pth  --eval heman-iou

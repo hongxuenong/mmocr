@@ -6,8 +6,9 @@ from .head_mixin import HeadMixin
 from .pan_head import PANHead
 from .pse_head import PSEHead
 from .textsnake_head import TextSnakeHead
+from .simple_head import SimpleHead
 
 __all__ = [
     'PSEHead', 'PANHead', 'DBHead', 'FCEHead', 'TextSnakeHead', 'DRRGHead',
-    'HeadMixin'
+    'HeadMixin', 'SimpleHead'
 ]

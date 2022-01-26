@@ -1,1 +1,3 @@
 python tools/train.py configs/textdet/custom/fcenet_eval_dataset_v1.py --load-from saved_models/fcenet_r50dcnv2_fpn_1500e_ctw1500_20211022-e326d7ec.pth --gpu-ids 1
+python tools/train.py configs/textdet/custom/dbnet_eval_dataset_v1.py --resume-from work_dirs/dbnet_eval_dataset_v1/latest.pth --gpu-ids 2
+python tools/train.py configs/textdet/custom/dbnet_swinbase_eval_dataset_v1.py --resume-from work_dirs/dbnet_swinbase_eval_dataset_v1/latest.pth --gpu-ids 1

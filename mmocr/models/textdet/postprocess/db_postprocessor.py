@@ -62,7 +62,7 @@ class DBPostprocessor(BasePostprocessor):
         for i, poly in enumerate(contours):
             if i > self.max_candidates:
                 break
-            epsilon = 0.01 * cv2.arcLength(poly, True)
+            epsilon = 0.001 * cv2.arcLength(poly, True)
             approx = cv2.approxPolyDP(poly, epsilon, True)
             points = approx.reshape((-1, 2))
             if points.shape[0] < 4:

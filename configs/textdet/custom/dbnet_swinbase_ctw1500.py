@@ -2,7 +2,7 @@ _base_ = [
     '../../_base_/runtime_10e.py',
     '../../_base_/schedules/schedule_adam_600e.py',
     '../../_base_/det_models/dbnet_swinbase_fpnc.py',
-    '../../_base_/det_datasets/eval_dataset_v1.py',
+    '../../_base_/det_datasets/ctw1500.py',
     '../../_base_/det_pipelines/dbnet_pipeline.py'
 ]
 
@@ -12,10 +12,10 @@ test_list = {{_base_.test_list}}
 train_pipeline_r50dcnv2 = {{_base_.train_pipeline_r50dcnv2}}
 test_pipeline_4068_1024 = {{_base_.test_pipeline_4068_1024}}
 
-# load_from = 'saved_models/swin_large_patch4_window12_384_22k.pth'
+# load_from = 'work_dirs/dbnet_r50dcnv2_fpnc_600e_ctw1500/latest.pth'
 
 data = dict(
-    samples_per_gpu=4,
+    samples_per_gpu=8,
     workers_per_gpu=4,
     val_dataloader=dict(samples_per_gpu=1),
     test_dataloader=dict(samples_per_gpu=1),

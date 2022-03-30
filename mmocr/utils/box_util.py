@@ -101,8 +101,8 @@ def stitch_boxes_into_lines(boxes, max_x_dist=10, min_y_overlap_ratio=0.8):
         # Get merged boxes
         for box_group in lines:
             merged_box = {}
-            merged_box['text'] = ' '.join(
-                [x_sorted_boxes[idx]['text'] for idx in box_group])
+            # merged_box['text'] = ' '.join(
+            #     [x_sorted_boxes[idx]['text'] for idx in box_group])
             x_min, y_min = float('inf'), float('inf')
             x_max, y_max = float('-inf'), float('-inf')
             for idx in box_group:

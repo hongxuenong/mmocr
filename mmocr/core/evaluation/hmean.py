@@ -9,6 +9,7 @@ from mmocr.core.evaluation import hmean_ic13, hmean_iou
 from mmocr.core.evaluation.utils import (filter_2dlist_result,
                                          select_top_boundary)
 from mmocr.core.mask import extract_boundary
+import numpy as np
 
 
 def output_ranklist(img_results, img_infos, out_file):
@@ -149,4 +150,6 @@ def eval_hmean(results,
         eval_results[metric + ':recall'] = best_result['recall']
         eval_results[metric + ':precision'] = best_result['precision']
         eval_results[metric + ':hmean'] = best_result['hmean']
+    np.savetxt(
+        'outputs/debug/img_result.txt', img_result, fmt='%s', delimiter=',')
     return eval_results

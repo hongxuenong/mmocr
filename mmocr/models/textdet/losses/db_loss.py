@@ -6,6 +6,8 @@ from torch import nn
 from mmocr.models.builder import LOSSES
 from mmocr.models.common.losses.dice_loss import DiceLoss
 
+import cv2
+
 
 @LOSSES.register_module()
 class DBLoss(nn.Module):
@@ -161,5 +163,9 @@ class DBLoss(nn.Module):
             loss_prob=self.alpha * loss_prob,
             loss_db=loss_db,
             loss_thr=self.beta * loss_thr)
-
+        # print(gt['gt_shrink'][0].shape)
+        # cv2.imwrite('outputs/temp/0_gt.png',
+        #             gt['gt_shrink'][0][0, :, :].cpu().detach().numpy() * 255)
+        # cv2.imwrite('outputs/temp/0_prob.png',
+        #             pred_prob[0, :, :].cpu().detach().numpy() * 255)
         return results

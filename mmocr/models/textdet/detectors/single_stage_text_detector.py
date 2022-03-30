@@ -1,8 +1,11 @@
 # Copyright (c) OpenMMLab. All rights reserved.
+from fileinput import filename
 import torch
 
 from mmocr.models.builder import DETECTORS
 from mmocr.models.common.detectors import SingleStageDetector
+
+import cv2
 
 
 @DETECTORS.register_module()
@@ -58,4 +61,22 @@ class SingleStageTextDetector(SingleStageDetector):
                 self.bbox_head.get_boundary(*outs, img_metas, rescale)
             ]
 
+        ## debug and test
+        # print(img_metas)
+        # print(boundaries)
+        # print(outs.shape)
+        # filename = boundaries[0]['filename']
+        # img_name = filename.split('/')[-1]
+        # print(img.shape)
+        # out_name = 'outputs/DBNet_CTW/test/' + img_name
+        # cv2.imwrite(out_name, img[0].cpu().numpy().transpose(1, 2, 0) * 255)
+        # out_name = 'outputs/viz/test/' + img_name.split(
+        #     '.')[0] + '_prob' + '.png'
+        # cv2.imwrite(out_name, outs[0, 0, :, :].cpu().numpy() * 255)
+        # out_name = 'outputs/viz/test/' + img_name.split(
+        #     '.')[0] + '_thrs' + '.png'
+        # cv2.imwrite(out_name, outs[0, 1, :, :].cpu().numpy() * 255)
+        # out_name = 'outputs/viz/test/' + img_name.split(
+        #     '.')[0] + '_binary' + '.png'
+        # cv2.imwrite(out_name, outs[0, 2, :, :].cpu().numpy() * 255)
         return boundaries
